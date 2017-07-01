@@ -1,0 +1,22 @@
+{
+    "__type": "Config",
+    "__value": {
+        "CmderExePath": {
+            "__type": "String",
+            "__value": "full Cmder executable path"
+        },
+        "WorkingDir": {
+            "__type": "String",
+            "__value": "directory in which to operate"
+        },
+        "Tasks": {
+            "__type": "Array",
+            "__value": [
+                {
+                    "__type": "Task",
+                    "__value": {}
+                }
+            ]
+        }
+    }
+}

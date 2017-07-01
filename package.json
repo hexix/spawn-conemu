@@ -8,7 +8,12 @@
     "lib": "lib"
   },
   "scripts": {
-    "test": "jest"
+    "test-debug": "tsc & node --nolazy --debug-brk node_modules/jest/bin/jest --no-cache -i --watchAll",
+    "test": "tsc & jest",
+    "build": "tsc",
+    "dev": "tsc --watch & nodemon .",
+    "lint": "eslint src --ext ts",
+    "tsc": "tsc"
   },
   "repository": {
     "type": "git",
@@ -23,8 +28,20 @@
     "url": "https://github.com/Gregor1971/launch-cmder/issues"
   },
   "homepage": "https://github.com/Gregor1971/launch-cmder#readme",
+  "dependencies": {
+    "find-up":"^2.1.0",
+    "ts-json-serializer": "^1.2.4"
+  },
   "devDependencies": {
-    "jest": "^20.0.4"
+    "@types/node": "7.0.22",
+    "eslint": "4.0.0",
+    "eslint-config-airbnb-base": "11.2.0",
+    "eslint-plugin-import": "2.3.0",
+    "eslint-plugin-promise": "3.5.0",
+    "eslint-plugin-react": "^7.1.0",
+    "jest": "^20.0.4",
+    "typescript": "^2.4.1",
+    "typescript-eslint-parser": "3.0.0"
   },
   "jest": {
     "verbose": true,
