@@ -1,0 +1,22 @@
+{
+  "name": "launch-cmder",
+  "version": "0.0.1",
+  "description": "Launch Cmder terminal(s)",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm run test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Gregor1971/launch-cmder.git"
+  },
+  "keywords": [
+    "cmder"
+  ],
+  "author": "Greg Miller",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Gregor1971/launch-cmder/issues"
+  },
+  "homepage": "https://github.com/Gregor1971/launch-cmder#readme"
+}
