@@ -4,7 +4,8 @@
   "description": "Launch Cmder terminal(s)",
   "main": "launch-cmder.js",
   "directories": {
-    "bin": "bin"
+    "bin": "bin",
+    "lib": "lib"
   },
   "scripts": {
     "test": "jest"
