@@ -7,10 +7,12 @@ import {
     reference,
     list,
     object,
+    custom,
     identifier,
     serialize,
     deserialize,
     getDefaultModelSchema,
+    setDefaultModelSchema,
     serializable,
     serializeAll
 } from 'serializr';
@@ -21,146 +23,162 @@ const ErrCodes = {
     CANTPARSE: "can not parse configuration file"
 }
 
+@serializeAll
 export class CommandArg {
-    @serializable
     public ArgValue: string;
 
-    constructor(
-        argValue: string) {
-        this.ArgValue = argValue;
-    }
+    constructor( ) {}
 
     public toSerialized(): string {
-        debugger;
         return serialize(this);
     }
 
     public static getExample(): CommandArg {
-        return new CommandArg("testArg");
+        let arg = new CommandArg();
+        arg.ArgValue = "arg";
+        return arg;
     }
 }
 
 export class Task {
-    @serializable
     public ExePath: string;
-    @serializable
     public StartInCmd: boolean;
-    @serializable
     public TabTitle: string;
-    // @serializable(list(object(CommandArg)))
     public CommandArgs: CommandArg[];
 
-    constructor(
-        exePath: string,
-        startInCmd: boolean,
-        tabTitle: string,
-        commandArgs: CommandArg[]) {
-            getDefaultModelSchema(Task).props['CommandArgs'] = list(object(CommandArg));
-            this.ExePath = exePath;
-            if (startInCmd) this.StartInCmd = startInCmd;
-            if (tabTitle) this.TabTitle = tabTitle;
-            if (commandArgs) {
-                this.CommandArgs = commandArgs;
-            } else {
-                this.CommandArgs = [];
-            }
+    constructor() {
+
     }
 
     public static getExample(): Task {
-        return new Task("exe path", true, "tab title", [
+        let task:Task = new Task();
+        task.ExePath = "exe path";
+        task.StartInCmd = true,
+        task.TabTitle = "tab title";
+        task.CommandArgs = [
             CommandArg.getExample(),
             CommandArg.getExample()
-        ]);
+        ];
+        return task;
     }
 
     public toSerialized(): string {
-        debugger;
         return serialize(this);
     }
-
 }
 
+const taskSchema = {
+    factory: context => new Task(),
+    props: {
+        ExePath: primitive(),
+        StartInCmd: primitive(),
+        TabTitle: primitive(),
+        CommandArgs: list(object(CommandArg))
+        // CommandArgs: custom(
+        //     objVal => {
+        //         let json = [];
+        //         let commandArgArr: Array<CommandArg> = objVal as Array<CommandArg>;
+        //         commandArgArr.forEach( commandArg => {
+        //             let commandArgStr = serialize(commandArg);
+        //             json.push(commandArgStr);
+        //         });
+        //         debugger;
+        //         return json;
+        //     },
+        //     json => {}
+        // )
+    }
+};
+setDefaultModelSchema(Task, taskSchema);
+
 export class Setup {
-    @serializable
     public Name: string;
-    @serializable
     public WorkingDir: string;
-    @serializable(list(object(Task)))
     public Tasks: Task[];
 
     // TODO add substitution vars
 
-    constructor(
-        name: string,
-        workingDir : string,
-        tasks : Task[]) {
-            this.Name = name;
-            if (workingDir) this.WorkingDir = workingDir;
-            if (tasks) {
-                this.Tasks = tasks;
-            } else {
-                this.Tasks = [];
-            }
+    constructor() {
     }
 
     public static getExample(): Setup {
-        return new Setup("setup name", "~", [
+        let setup = new Setup();
+        setup.Name = "setup name";
+        setup.WorkingDir = "setup working dir";
+        setup.Tasks = [
             Task.getExample(),
             Task.getExample()
-            ]);
+        ];
+        return  setup;
     }
 
     public toSerialized(): string {
-        debugger;
         return serialize(this);
     }
 
 }
 
+const setupSchema = {
+    factory: context => new Setup(),
+    props: {
+        Name: primitive(),
+        WorkingDir: primitive(),
+        Tasks: list(object(Task))
+        // Tasks: custom(
+        //     objVal => {
+        //         let json = [];
+        //         let taskArr: Array<Task> = objVal as Array<Task>;
+        //         taskArr.forEach( task => {
+        //             let taskStr = serialize(task);
+        //             json.push(taskStr);
+        //         });
+        //         debugger;
+        //         return json;
+        //     },
+        //     json => {})
+    }
+};
+setDefaultModelSchema(Setup, setupSchema);
+
 export class Config {
-    @serializable
     public ComEmuExePath: string;
-    @serializable
     public WorkingDir: string;
-    @serializable
     public IconFile: string;
-    @serializable(list(object(Setup)))
     public Setups: Setup[];
 
-    constructor(
-        conEmuExePath: string,
-        workingDir: string,
-        iconFile: string,
-        setups: Setup[]) {
-            this.ComEmuExePath = conEmuExePath;
-            this.WorkingDir = workingDir;
-            if (iconFile) this.IconFile = iconFile;
-            if (setups) {
-                this.Setups = setups;
-            } else {
-                this.Setups = [];
-            }
-    }
+    constructor( ) {}
 
     public static getExample(): Config {
-        return new Config("ConEmu exe path", "workingDir", "icon file path", [
+        let config = new Config();
+        config.ComEmuExePath = "comemu path";
+        config.IconFile = "icon file";
+        config.WorkingDir = "task working dir";
+        config.Setups = [
             Setup.getExample(),
             Setup.getExample()
-        ])
+        ];
+        return config;
     }
 
     private static readFile(filepath): Config {
         if (!filepath) throw { error: ErrCodes.NOCFGFILE };
-        debugger;
-        let configStr = fs.readFileSync(filepath, "utf8")
-        let loaded = deserialize(Config, configStr);
-        // return loaded;
+        let configStr = JSON.stringify(JSON.parse(fs.readFileSync(filepath, "utf8")));
+        let loaded:Config = deserialize(Config, configStr, (err, result) => {
+            if (err)
+                throw err;
+            else {
+                return result;
+            }
+        });
         return loaded;
     }
 
     public toSerialized(): string {
-        debugger;
         return serialize(this);
+    }
+
+    public static fromSerialized(json: string) {
+        return deserialize(Config, json);
     }
 
     static fromFile(configFilePath?: string): Config {
@@ -168,8 +186,6 @@ export class Config {
             if (!configFilePath) {
                 configFilePath = dfltCfgFileName; 
             }
-
-debugger;
             if (path.isAbsolute(configFilePath)) {
                 return this.readFile(configFilePath);
             } else {
@@ -189,6 +205,37 @@ debugger;
         }
     }
 }
+
+const configSchema = {
+    factory: context => new Config(),
+    props: {
+        ComEmuPath: primitive(),
+        WorkingDir: primitive(),
+        IconFile: primitive(),
+        Setups: custom(
+            objVal => {
+                let json = [];
+                let setupArr: Array<Setup> = objVal as Array<Setup>;
+                setupArr.forEach( setup => {
+                    let setupStr = serialize(setup);
+                    json.push(JSON.stringify(setupStr));
+                debugger;
+                });
+                return json;
+            },
+            json => {
+                let config: Config;
+                JSON.parse(json).forEach(setupStr => {
+                    let setup: Setup = deserialize(Setup, setupStr);
+                    config.Setups.push(setup);
+                debugger;
+                });
+                return config;
+            }
+        )
+    }
+}
+setDefaultModelSchema(Config, configSchema);
 
 // module LaunchCmderLib {
 

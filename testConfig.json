@@ -1,21 +1,69 @@
-{
-      "CmderExePath": "undefined",
-      "WorkingDir": "undefined",
-      "IconFile": "icon file path",
-      "Setups": [
-           { "Name": "setup name", 
-           "WorkingDir": "~",
-           "Tasks": [
-               {
-                   "ExePath": "exe path",
-                   "StartInCmd": false,
-                   "TabTitle": "tab title",
-                   "args": [
-                       "arg1",
-                       "arg2"
-                   ]
-               }
+{ "ComEmuPath": undefined,
+      "WorkingDir": 'task working dir',
+      "IconFile": 'icon file',
+      "Setups": [ '{
+            "Name": "setup name",
+            "WorkingDir": "setup working dir",
+            "Tasks": [
+                {
+                    "ExePath": "exe path",
+                    "StartInCmd": true,
+                    "TabTitle": "tab title",
+                    "CommandArgs": [
+                        {
+                            "ArgValue": "arg"
+                        },
+                        {
+                            "ArgValue": "arg"
+                        }
+                    ]
+                },
+                {
+                    "ExePath": "exe path",
+                    "StartInCmd": true,
+                    "TabTitle": "tab title",
+                    "CommandArgs": [
+                        {
+                            "ArgValue": "arg"
+                        },
+                        {
+                            "ArgValue": "arg"
+                        }
+                    ]
+                }
             ]
-        }
+        }',
+         '{
+            "Name": "setup name",
+            "WorkingDir": "setup working dir",
+            "Tasks": [
+                {
+                    "ExePath": "exe path",
+                    "StartInCmd": true,
+                    "TabTitle": "tab title",
+                    "CommandArgs": [
+                        {
+                            "ArgValue": "arg"
+                        },
+                        {
+                            "ArgValue": "arg"
+                        }
+                    ]
+                },
+                {
+                    "ExePath": "exe path",
+                    "StartInCmd": true,
+                    "TabTitle": "tab title",
+                    "CommandArgs": [
+                        {
+                            "ArgValue": "arg"
+                        },
+                        {
+                            "ArgValue": "arg"
+                        }
+                    ]
+                }
+            ]
+        }'
     ]
 }

@@ -9,7 +9,7 @@
   },
   "scripts": {
     "test-debug": "tsc & node --nolazy --debug-brk node_modules/jest/bin/jest --no-cache -i --watchAll",
-    "test": "tsc & jest",
+    "test": "tsc & jest --no-cache",
     "build": "tsc",
     "dev": "tsc --watch",
     "lint": "eslint src --ext ts",
