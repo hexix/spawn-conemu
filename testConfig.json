@@ -1,22 +1,21 @@
 {
-    "__type": "Config",
-    "__value": {
-        "CmderExePath": {
-            "__type": "String",
-            "__value": "full Cmder executable path"
-        },
-        "WorkingDir": {
-            "__type": "String",
-            "__value": "directory in which to operate"
-        },
-        "Tasks": {
-            "__type": "Array",
-            "__value": [
-                {
-                    "__type": "Task",
-                    "__value": {}
-                }
+      "CmderExePath": "undefined",
+      "WorkingDir": "undefined",
+      "IconFile": "icon file path",
+      "Setups": [
+           { "Name": "setup name", 
+           "WorkingDir": "~",
+           "Tasks": [
+               {
+                   "ExePath": "exe path",
+                   "StartInCmd": false,
+                   "TabTitle": "tab title",
+                   "args": [
+                       "arg1",
+                       "arg2"
+                   ]
+               }
             ]
         }
-    }
+    ]
 }

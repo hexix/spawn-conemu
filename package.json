@@ -11,7 +11,7 @@
     "test-debug": "tsc & node --nolazy --debug-brk node_modules/jest/bin/jest --no-cache -i --watchAll",
     "test": "tsc & jest",
     "build": "tsc",
-    "dev": "tsc --watch & nodemon .",
+    "dev": "tsc --watch",
     "lint": "eslint src --ext ts",
     "tsc": "tsc"
   },
@@ -30,7 +30,7 @@
   "homepage": "https://github.com/Gregor1971/launch-cmder#readme",
   "dependencies": {
     "find-up":"^2.1.0",
-    "ts-json-serializer": "^1.2.4"
+    "serializr": "^1.1.12"
   },
   "devDependencies": {
     "@types/node": "7.0.22",
