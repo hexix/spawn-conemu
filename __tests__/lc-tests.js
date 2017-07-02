@@ -9,7 +9,7 @@ describe("serializr", () => {
 });
 
 describe("Build Config", () => {
-    test.only("Just build", () => {
+    test("Just build", () => {
         expect(true).toBeTruthy();
         var arg = lcLib.CommandArg.getExample();
         // var argStr = arg.toSerialized();
@@ -21,10 +21,10 @@ describe("Build Config", () => {
         var config = lcLib.Config.getExample();
         console.log(config);
 
-        var configStr = config.toSerialized();
-        console.log(configStr);
+        var configSrz = config.toSerializedString();
+        console.log(configSrz);
 
-        var andBack = lcLib.Config.fromSerialized(configStr);
+        var andBack = lcLib.Config.fromSerializedString(configSrz);
         console.log(andBack);
     });
 });
@@ -41,7 +41,7 @@ describe("Load Config", () => {
         console.log("configFile: " + configFile);
         var config = lcLib.Config.fromFile(configFile);
         //console.log(config);
-        console.log(config.toSerialized());
+        console.log(config.toSerializedString());
         expect(config).not.toBeUndefined();
     });
 });
