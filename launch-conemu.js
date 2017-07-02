@@ -113,7 +113,7 @@ class Config {
     constructor() { }
     static getExample() {
         let config = new Config();
-        config.ComEmuExePath = "conemu path";
+        config.ConEmuExePath = "conemu path";
         config.IconFile = "icon file";
         config.ConfigFile = "config working dir";
         config.Setups = [
@@ -168,7 +168,7 @@ class Config {
 }
 __decorate([
     serializr_1.serializable
-], Config.prototype, "ComEmuExePath", void 0);
+], Config.prototype, "ConEmuExePath", void 0);
 __decorate([
     serializr_1.serializable
 ], Config.prototype, "ConfigFile", void 0);

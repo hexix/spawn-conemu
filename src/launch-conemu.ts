@@ -125,7 +125,7 @@ export class Setup {
 
 export class Config {
     @serializable
-    public ComEmuExePath: string;
+    public ConEmuExePath: string;
     @serializable
     public ConfigFile: string;
     @serializable
@@ -139,7 +139,7 @@ export class Config {
 
     public static getExample(): Config {
         let config = new Config();
-        config.ComEmuExePath = "conemu path";
+        config.ConEmuExePath = "conemu path";
         config.IconFile = "icon file";
         config.ConfigFile = "config working dir";
         config.Setups = [
