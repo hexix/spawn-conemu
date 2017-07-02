@@ -10,6 +10,7 @@ const fs = require("fs");
 const path = require("path");
 const findUp = require("find-up");
 const Commander = require("commander");
+const pkginfo = require("pkginfo");
 const serializr_1 = require("serializr");
 const dfltCfgFileName = "launch-conemu.json";
 const ErrCodes = {
@@ -19,11 +20,15 @@ const ErrCodes = {
 class default_1 {
     static launch() {
         let config = Config.fromFile();
-        if (!config)
+        if (!config) {
+            // console.error("");
             return 1;
+        }
         let program = new Commander.Command();
+        let modExports = pkginfo(module, "version");
+        let exp = module.exports;
         program
-            .version("0.1.0");
+            .version(exp.version);
         program
             .command("start <setup>")
             .action((setup) => {

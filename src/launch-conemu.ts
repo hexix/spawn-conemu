@@ -2,6 +2,7 @@ import * as fs from "fs";
 import * as path from "path";
 import * as findUp from "find-up";
 import * as Commander from "commander";
+import * as pkginfo from "pkginfo";
 import {
     createModelSchema,
     primitive,
@@ -28,12 +29,18 @@ export default class {
     public static launch(): number {
 
         let config = Config.fromFile();
-        if (!config) return 1;
+        if (!config) {
+            // console.error("");
+            return 1;
+        }
 
         let program = new Commander.Command();
 
+        let modExports = pkginfo(module, "version");
+        let exp = module.exports;
+
         program
-            .version("0.1.0")
+            .version(exp.version);
 
         program
             .command("start <setup>")
