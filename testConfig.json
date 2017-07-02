@@ -1,0 +1,70 @@
+{
+    "WorkingDir": "config working dir",
+    "IconFile": "icon file",
+    "Setups": [
+        {
+            "Name": "setup name",
+            "WorkingDir": "setup working dir",
+            "Tasks": [
+                {
+                    "ExePath": "exe path",
+                    "StartInCmd": true,
+                    "TabTitle": "tab title",
+                    "CommandArgs": [
+                        {
+                            "ArgValue": "arg"
+                        },
+                        {
+                            "ArgValue": "arg"
+                        }
+                    ]
+                },
+                {
+                    "ExePath": "exe path",
+                    "StartInCmd": true,
+                    "TabTitle": "tab title",
+                    "CommandArgs": [
+                        {
+                            "ArgValue": "arg"
+                        },
+                        {
+                            "ArgValue": "arg"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "Name": "setup name",
+            "WorkingDir": "setup working dir",
+            "Tasks": [
+                {
+                    "ExePath": "exe path",
+                    "StartInCmd": true,
+                    "TabTitle": "tab title",
+                    "CommandArgs": [
+                        {
+                            "ArgValue": "arg"
+                        },
+                        {
+                            "ArgValue": "arg"
+                        }
+                    ]
+                },
+                {
+                    "ExePath": "exe path",
+                    "StartInCmd": true,
+                    "TabTitle": "tab title",
+                    "CommandArgs": [
+                        {
+                            "ArgValue": "arg"
+                        },
+                        {
+                            "ArgValue": "arg"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

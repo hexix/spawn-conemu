@@ -1,0 +1,63 @@
+{
+  "name": "launch-cmder",
+  "version": "0.0.1",
+  "description": "Launch Cmder terminal(s)",
+  "main": "launch-cmder.js",
+  "directories": {
+    "bin": "bin",
+    "lib": "lib"
+  },
+  "scripts": {
+    "test-debug": "tsc & node --nolazy --debug-brk node_modules/jest/bin/jest --no-cache -i --watchAll",
+    "test": "tsc & jest --no-cache",
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "lint": "eslint src --ext ts",
+    "tsc": "tsc"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Gregor1971/launch-cmder.git"
+  },
+  "keywords": [
+    "cmder"
+  ],
+  "author": "Greg Miller",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Gregor1971/launch-cmder/issues"
+  },
+  "homepage": "https://github.com/Gregor1971/launch-cmder#readme",
+  "dependencies": {
+    "find-up":"^2.1.0",
+    "serializr": "^1.1.12"
+  },
+  "devDependencies": {
+    "@types/node": "7.0.22",
+    "eslint": "4.0.0",
+    "eslint-config-airbnb-base": "11.2.0",
+    "eslint-plugin-import": "2.3.0",
+    "eslint-plugin-promise": "3.5.0",
+    "eslint-plugin-react": "^7.1.0",
+    "jest": "^20.0.4",
+    "typescript": "^2.4.1",
+    "typescript-eslint-parser": "3.0.0"
+  },
+  "jest": {
+    "verbose": true,
+    "testEnvironment": "node",
+    "moduleFileExtensions": [
+      "js",
+      "json"
+    ],
+    "moduleDirectories": [
+      "node_modules"
+    ],
+    "roots": [
+      "<rootDir>/__tests__"
+    ],
+    "setupFiles": [
+      "./jest-setup.js"
+    ]
+  }
+}

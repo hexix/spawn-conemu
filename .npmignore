@@ -1,0 +1,4 @@
+.vscode
+.history
+__tests__
+jest-setup.js

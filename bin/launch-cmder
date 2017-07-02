@@ -1,0 +1,3 @@
+#!/usr/bin/env node
+var launchCmder = require("../");
+launchCmder(process.argv);
