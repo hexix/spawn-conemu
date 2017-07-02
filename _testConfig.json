@@ -1,5 +1,6 @@
 {
-    "WorkingDir": "config working dir",
+    "ComEmuExePath": "conemu path",
+    "ConfigFile": "config working dir",
     "IconFile": "icon file",
     "Setups": [
         {

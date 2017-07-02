@@ -1,6 +1,6 @@
 const fs = require("fs");
 const path = require("path");
-const lcLib = require("../lib/launch-cmder.js");
+const lcLib = require("../launch-conemu.js");
 
 describe("serializr", () => {
     test("ToDos", () => {

@@ -9,12 +9,40 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const fs = require("fs");
 const path = require("path");
 const findUp = require("find-up");
+const Commander = require("commander");
 const serializr_1 = require("serializr");
-const dfltCfgFileName = "launch-cmder.json";
+const dfltCfgFileName = "launch-conemu.json";
 const ErrCodes = {
     NOCFGFILE: "can not find configuration file",
     CANTPARSE: "can not parse configuration file"
 };
+class default_1 {
+    static launch() {
+        let config = Config.fromFile();
+        if (!config)
+            return 1;
+        let program = new Commander.Command();
+        program
+            .version("0.1.0");
+        program
+            .command("start <setup>")
+            .action((setup) => {
+            console.log("start %s", setup);
+            return 0;
+        });
+        program
+            .command("list")
+            .action(() => {
+            config.Setups.forEach(setup => {
+                console.log(setup.Name);
+            });
+            return 0;
+        });
+        program.parse(process.argv);
+        return 0;
+    }
+}
+exports.default = default_1;
 let CommandArg = CommandArg_1 = class CommandArg {
     constructor() {
     }
@@ -56,37 +84,6 @@ __decorate([
     serializr_1.serializable(serializr_1.list(serializr_1.object(CommandArg)))
 ], Task.prototype, "CommandArgs", void 0);
 exports.Task = Task;
-// const taskSchema = {
-//     factory: context => new Task(),
-//     props: {
-//         ExePath: primitive(),
-//         StartInCmd: primitive(),
-//         TabTitle: primitive(),
-//         CommandArgs: list(object(CommandArg))
-//         // CommandArgs: custom(
-//         //     objVal => {
-//         //         let json = [];
-//         //         let commandArgArr: Array<CommandArg> = objVal as Array<CommandArg>;
-//         //         commandArgArr.forEach( commandArg => {
-//         //             let commandArgSrz = serialize(commandArg);
-//         //             json.push(commandArgSrz);
-//         //         });
-//         //         // debugger;
-//         //         return json;
-//         //     },
-//         //     json => {
-//         //         debugger;
-//         //         let task: Task;
-//         //         json.Tasks.forEach(commandArgSrz => {
-//         //             let commandArg: CommandArg = deserialize(CommandArg, commandArgSrz);
-//         //             task.CommandArgs.push(commandArg);
-//         //         });
-//         //         return task;
-//         //     }
-//         // )
-//     }
-// };
-// setDefaultModelSchema(Task, taskSchema);
 class Setup {
     // TODO: add substitution vars
     constructor() {
@@ -112,43 +109,13 @@ __decorate([
     serializr_1.serializable(serializr_1.list(serializr_1.object(Task)))
 ], Setup.prototype, "Tasks", void 0);
 exports.Setup = Setup;
-// const setupSchema = {
-//     factory: context => new Setup(),
-//     props: {
-//         Name: primitive(),
-//         WorkingDir: primitive(),
-//         Tasks: list(object(Task))
-//         // Tasks: custom(
-//         //     objVal => {
-//         //         let json = [];
-//         //         let taskArr: Array<Task> = objVal as Array<Task>;
-//         //         taskArr.forEach( task => {
-//         //             let taskSrz = serialize(task);
-//         //             json.push(taskSrz);
-//         //         });
-//         //         // debugger;
-//         //         return json;
-//         //     },
-//         //     json => {
-//         //         debugger;
-//         //         let setup: Setup;
-//         //         json.Setups.forEach(taskSrz => {
-//         //             let task: Task = deserialize(Task, taskSrz);
-//         //             setup.Tasks.push(task);
-//         //         });
-//         //         return setup;
-//         //     }
-//         // )
-//     }
-// };
-// setDefaultModelSchema(Setup, setupSchema);
 class Config {
     constructor() { }
     static getExample() {
         let config = new Config();
-        config.ComEmuExePath = "comemu path";
+        config.ComEmuExePath = "conemu path";
         config.IconFile = "icon file";
-        config.WorkingDir = "config working dir";
+        config.ConfigFile = "config working dir";
         config.Setups = [
             Setup.getExample(),
             Setup.getExample()
@@ -172,6 +139,10 @@ class Config {
     }
     static fromFile(configFilePath) {
         try {
+            let homePath = path.join("~", dfltCfgFileName);
+            if (fs.exists(homePath)) {
+                return this.readFile(homePath);
+            }
             if (!configFilePath) {
                 configFilePath = dfltCfgFileName;
             }
@@ -179,8 +150,6 @@ class Config {
                 return this.readFile(configFilePath);
             }
             else {
-                console.log("looking for " + configFilePath);
-                console.log("starting in " + process.cwd());
                 let filepath = findUp.sync(configFilePath);
                 if (filepath) {
                     return this.readFile(filepath);
@@ -202,7 +171,10 @@ __decorate([
 ], Config.prototype, "ComEmuExePath", void 0);
 __decorate([
     serializr_1.serializable
-], Config.prototype, "WorkingDir", void 0);
+], Config.prototype, "ConfigFile", void 0);
+__decorate([
+    serializr_1.serializable
+], Config.prototype, "Title", void 0);
 __decorate([
     serializr_1.serializable
 ], Config.prototype, "IconFile", void 0);
@@ -211,43 +183,4 @@ __decorate([
 ], Config.prototype, "Setups", void 0);
 exports.Config = Config;
 var CommandArg_1;
-// const configSchema = {
-//     factory: context => new Config(),
-//     props: {
-//         ComEmuPath: primitive(),
-//         WorkingDir: primitive(),
-//         IconFile: primitive(),
-//         Setups: list(object(Setup))
-//         // Setups: custom(
-//         //     objVal => {
-//         //         // debugger;
-//         //         let json = {
-//         //             ComEmuExePath = target.ComEmuExePath
-//         //         };
-//         //         json.Setups = [];
-//         //         let setupArr: Array<Setup> = objVal as Array<Setup>;
-//         //         setupArr.forEach( setup => {
-//         //             let setupSrz = serialize(setup);
-//         //             json.Setups.push(setupSrz);
-//         //         });
-//         //         return json;
-//         //     },
-//         //     json => {
-//         //         debugger;
-//         //         let config: Config;
-//         //         if (json.ComEmuExePath) config.ComEmuExePath = json.ComEmuExePath;
-//         //         if (json.WorkingDir) config.WorkingDir = json.WorkingDir;
-//         //         if (json.IconFile) config.IconFile = json.IconFile;
-//         //         json.Setups.forEach(setupSrz => {
-//         //             let setup: Setup = deserialize(Setup, setupSrz);
-//         //             config.Setups.push(setup);
-//         //         });
-//         //         return config;
-//         //     }
-//         // )
-//     }
-// }
-// setDefaultModelSchema(Config, configSchema);
-// module LaunchCmderLib {
-// }
-//# sourceMappingURL=launch-cmder.js.map
+//# sourceMappingURL=launch-conemu.js.map

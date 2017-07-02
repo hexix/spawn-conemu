@@ -1,11 +1,10 @@
 {
-  "name": "launch-cmder",
+  "name": "launch-conemu",
   "version": "0.0.1",
-  "description": "Launch Cmder terminal(s)",
-  "main": "launch-cmder.js",
+  "description": "Launch ConEmu terminal(s)",
+  "main": "launch-conemu.js",
   "directories": {
-    "bin": "bin",
-    "lib": "lib"
+    "bin": "bin"
   },
   "scripts": {
     "test-debug": "tsc & node --nolazy --debug-brk node_modules/jest/bin/jest --no-cache -i --watchAll",
@@ -17,23 +16,25 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Gregor1971/launch-cmder.git"
+    "url": "git+https://github.com/Gregor1971/launch-conemu.git"
   },
   "keywords": [
-    "cmder"
+    "conemu"
   ],
   "author": "Greg Miller",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/Gregor1971/launch-cmder/issues"
+    "url": "https://github.com/Gregor1971/launch-conemu/issues"
   },
-  "homepage": "https://github.com/Gregor1971/launch-cmder#readme",
+  "homepage": "https://github.com/Gregor1971/launch-conemu#readme",
   "dependencies": {
     "find-up":"^2.1.0",
-    "serializr": "^1.1.12"
+    "serializr": "^1.1.12",
+    "commander": "^2.10.0"
   },
   "devDependencies": {
     "@types/node": "7.0.22",
+    "@types/commander": "^2.9.1",
     "eslint": "4.0.0",
     "eslint-config-airbnb-base": "11.2.0",
     "eslint-plugin-import": "2.3.0",
