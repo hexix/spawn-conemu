@@ -4,13 +4,13 @@
 
 Spawn ConEmu terminals, with splitting.
 
-> Looks for a config file named 'spawn-conemu.json' in:   
+Looks for a config file named 'spawn-conemu.json' in:   
 
->    user's home directory
->    current directory
->    ... then progresses up the tree from the current directory
-> 
-> 
+	user's home directory
+	current directory
+	... then progresses up the tree from the current directory
+
+
 
        Commands:
      
