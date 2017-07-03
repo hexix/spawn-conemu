@@ -1,2 +1,2 @@
-# launch-conemu
-Launch Conemu
+# spawn-conemu
+Spawn Conemu

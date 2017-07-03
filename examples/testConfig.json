@@ -1,7 +1,7 @@
 {
     "ConEmuExePath": "conemu path",
     "ConfigFile": "config working dir",
-    "IconFile": "icon file",
+    "IconFile": "window icon file",
     "Setups": [
         {
             "Name": "setup name",
@@ -10,27 +10,21 @@
                 {
                     "ExePath": "exe path",
                     "StartInCmd": true,
+                    "IconFile": "tab icon file",
                     "TabTitle": "tab title",
-                    "CommandArgs": [
-                        {
-                            "ArgValue": "arg"
-                        },
-                        {
-                            "ArgValue": "arg"
-                        }
+                    "Args": [
+                        "arg1",
+                        "arg2"
                     ]
                 },
                 {
                     "ExePath": "exe path",
                     "StartInCmd": true,
+                    "IconFile": "tab icon file",
                     "TabTitle": "tab title",
-                    "CommandArgs": [
-                        {
-                            "ArgValue": "arg"
-                        },
-                        {
-                            "ArgValue": "arg"
-                        }
+                    "Args": [
+                        "arg1",
+                        "arg2"
                     ]
                 }
             ]
@@ -42,27 +36,21 @@
                 {
                     "ExePath": "exe path",
                     "StartInCmd": true,
+                    "IconFile": "tab icon file",
                     "TabTitle": "tab title",
-                    "CommandArgs": [
-                        {
-                            "ArgValue": "arg"
-                        },
-                        {
-                            "ArgValue": "arg"
-                        }
+                    "Args": [
+                        "arg1",
+                        "arg2"
                     ]
                 },
                 {
                     "ExePath": "exe path",
                     "StartInCmd": true,
+                    "IconFile": "tab icon file",
                     "TabTitle": "tab title",
-                    "CommandArgs": [
-                        {
-                            "ArgValue": "arg"
-                        },
-                        {
-                            "ArgValue": "arg"
-                        }
+                    "Args": [
+                        "arg1",
+                        "arg2"
                     ]
                 }
             ]

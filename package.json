@@ -1,8 +1,8 @@
 {
-  "name": "launch-conemu",
-  "version": "0.0.1",
-  "description": "Launch ConEmu terminal(s)",
-  "main": "launch-conemu.js",
+  "name": "spawn-conemu",
+  "version": "0.1.2",
+  "description": "Spawn ConEmu terminal(s)",
+  "main": "spawn-conemu.js",
   "directories": {
     "bin": "bin"
   },
@@ -16,7 +16,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Gregor1971/launch-conemu.git"
+    "url": "git+https://github.com/Gregor1971/spawn-conemu.git"
   },
   "keywords": [
     "conemu"
@@ -24,14 +24,15 @@
   "author": "Greg Miller",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/Gregor1971/launch-conemu/issues"
+    "url": "https://github.com/Gregor1971/spawn-conemu/issues"
   },
-  "homepage": "https://github.com/Gregor1971/launch-conemu#readme",
+  "homepage": "https://github.com/Gregor1971/spawn-conemu#readme",
   "dependencies": {
-    "find-up":"^2.1.0",
+    "find-up": "^2.1.0",
     "serializr": "^1.1.12",
     "commander": "^2.10.0",
-    "pkginfo": "^0.4.0"
+    "pkginfo": "^0.4.0",
+    "underscore": "^1.8.3"
   },
   "devDependencies": {
     "@types/node": "7.0.22",

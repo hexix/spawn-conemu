@@ -2451,6 +2451,10 @@ uglify-to-browserify@~1.0.0:
   version "1.0.2"
   resolved "http://localhost:4873/uglify-to-browserify/-/uglify-to-browserify-1.0.2.tgz#6e0924d6bda6b5afe349e39a6d632850a0f882b7"
 
+underscore@^1.8.3:
+  version "1.8.3"
+  resolved "http://localhost:4873/underscore/-/underscore-1.8.3.tgz#4f3fb53b106e6097fcf9cb4109f2a5e9bdfa5022"
+
 util-deprecate@~1.0.1:
   version "1.0.2"
   resolved "http://localhost:4873/util-deprecate/-/util-deprecate-1.0.2.tgz#450d4dc9fa70de732762fbd2d4a28981419a0ccf"
