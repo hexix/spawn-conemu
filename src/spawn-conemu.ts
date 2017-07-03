@@ -131,19 +131,21 @@ export default class {
 
 // TODO: intelligently set splits based on task.length
     private static getSplit(order: number): string {
+        // if (order > 0) return "s1T25V";
+
         switch (order) {
             case 0:
                 return "";
             case 1:
-                return "s1TV";
+                return "s1T75V";
             case 2:
-                return "s1TH";
+                return "s2T66V";
             case 3:
-                return "s2TH";
+                return "s3T50V";
             case 4:
-                return "s2TV";
+                return "s1TV";
             case 5:
-                return "s3TH";
+                return "s1TV";
         }
         return "";
     }
