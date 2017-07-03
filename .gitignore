@@ -57,3 +57,16 @@ typings/
 # dotenv environment variables file
 .env
 
+# VS Code
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
+# VS Code Local History extension
+.history
+
+# Expo
+.expo/
+

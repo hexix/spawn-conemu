@@ -1,0 +1,59 @@
+{
+    "ConEmuExePath": "conemu path",
+    "ConfigFile": "config working dir",
+    "IconFile": "window icon file",
+    "Setups": [
+        {
+            "Name": "setup name",
+            "WorkingDir": "setup working dir",
+            "Tasks": [
+                {
+                    "ExePath": "exe path",
+                    "StartInCmd": true,
+                    "IconFile": "tab icon file",
+                    "TabTitle": "tab title",
+                    "Args": [
+                        "arg1",
+                        "arg2"
+                    ]
+                },
+                {
+                    "ExePath": "exe path",
+                    "StartInCmd": true,
+                    "IconFile": "tab icon file",
+                    "TabTitle": "tab title",
+                    "Args": [
+                        "arg1",
+                        "arg2"
+                    ]
+                }
+            ]
+        },
+        {
+            "Name": "setup name",
+            "WorkingDir": "setup working dir",
+            "Tasks": [
+                {
+                    "ExePath": "exe path",
+                    "StartInCmd": true,
+                    "IconFile": "tab icon file",
+                    "TabTitle": "tab title",
+                    "Args": [
+                        "arg1",
+                        "arg2"
+                    ]
+                },
+                {
+                    "ExePath": "exe path",
+                    "StartInCmd": true,
+                    "IconFile": "tab icon file",
+                    "TabTitle": "tab title",
+                    "Args": [
+                        "arg1",
+                        "arg2"
+                    ]
+                }
+            ]
+        }
+    ]
+}
