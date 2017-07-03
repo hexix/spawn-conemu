@@ -1,0 +1,58 @@
+{
+    "Setups": [
+        {
+            "Title": "Logs for platformtest20",
+            "Tasks": [
+                {
+                    "Args": [
+                        "logs",
+                        "-f",
+                        "-t",
+                        "rn"
+                    ],
+                    "TaskExePath": "C:/Program Files/Docker/Docker/resources/bin/docker-compose.exe",
+                    "TabIconFile": "C:/Program Files/Docker/Docker/resources/bin/docker-compose.exe",
+                    "TabTitle": "React Native"
+                },
+                {
+                    "Args": [
+                        "logs",
+                        "-f",
+                        "-t",
+                        "rn-watch"
+                    ],
+                    "TaskExePath": "C:/Program Files/Docker/Docker/resources/bin/docker-compose.exe",
+                    "TabIconFile": "C:/Program Files/Docker/Docker/resources/bin/docker-compose.exe",
+                    "TabTitle": "RN Watch"
+                },
+                {
+                    "Args": [
+                        "logs",
+                        "-f",
+                        "-t",
+                        "web"
+                    ],
+                    "TaskExePath": "C:/Program Files/Docker/Docker/resources/bin/docker-compose.exe",
+                    "TabIconFile": "C:/Program Files/Docker/Docker/resources/bin/docker-compose.exe",
+                    "TabTitle": "Web"
+                },
+                {
+                    "Args": [
+                        "logs",
+                        "-f",
+                        "-t",
+                        "web-watch"
+                    ],
+                    "TaskExePath": "C:/Program Files/Docker/Docker/resources/bin/docker-compose.exe",
+                    "TabIconFile": "C:/Program Files/Docker/Docker/resources/bin/docker-compose.exe",
+                    "TabTitle": "Web"
+                }
+            ],
+            "Name": "platformtest20",
+            "WorkingDir": "C:/Users/grego/Hexix/PlatformTests/platformtest20"
+        }
+    ],
+    "ConEmuExePath": "C:/Users/grego/cmder_mini/vendor/conemu-maximus5/ConEmu64.exe",
+    "ConfigFile": "C:/Users/grego/cmder_mini/vendor/conemu-maximus5/ConEmu.xml",
+    "WindowIconFile": "C:/Users/grego/cmder_mini/icons/cmder_blue.ico"
+}
